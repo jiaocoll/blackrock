@@ -117,7 +117,7 @@ func (blackrock *BlackRock) Unfe(r, a, b, m, seed int64) int64 {
 	return a*R + L
 }
 
-func (blackrock *BlackRock) Shuffle(m int64) int64 {
+func Shuffle(blackrock *BlackRock, m int64) int64 {
 	c := blackrock.Fe(blackrock.Rounds, blackrock.A, blackrock.B, m, blackrock.Seed)
 
 	for c >= blackrock.Range {
@@ -127,7 +127,7 @@ func (blackrock *BlackRock) Shuffle(m int64) int64 {
 	return c
 }
 
-func (blackrock *BlackRock) UnShuffle(m int64) int64 {
+func UnShuffle(blackrock *BlackRock, m int64) int64 {
 	c := blackrock.Unfe(blackrock.Rounds, blackrock.A, blackrock.B, m, blackrock.Seed)
 	for c >= blackrock.Range {
 		c = blackrock.Unfe(blackrock.Rounds, blackrock.A, blackrock.B, c, blackrock.Seed)
